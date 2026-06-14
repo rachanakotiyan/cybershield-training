@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield Training Portal - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <svg class="nav-logo-svg" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M12 6v11M9 9h6"/>
+            </svg>
+            <span class="nav-title">CyberShield</span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="nav-link active">Dashboard</a></li>
+            <li><a href="module1.html" class="nav-link" id="navMod1">Phishing</a></li>
+            <li><a href="module2.html" class="nav-link" id="navMod2">Passwords</a></li>
+            <li><a href="module3.html" class="nav-link" id="navMod3">Social Engineering</a></li>
+            <li><a href="simulations.html" class="nav-link">Simulations</a></li>
+            <li><a href="results.html" class="nav-link">Results</a></li>
+            <li><div class="nav-user" id="navUser">Agent: Guest</div></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Profile Onboarding Card (shown if name is missing) -->
+        <div class="card profile-panel" id="onboardingCard">
+            <h2>Welcome to CyberShield</h2>
+            <p style="color: var(--text-muted); margin-top: 0.5rem;">Initialize your security credentials to begin the awareness training.</p>
+            
+            <div class="form-group">
+                <label for="employeeName">Enter Your Full Name</label>
+                <input type="text" id="employeeName" class="input-field" placeholder="John Doe" required>
+            </div>
+            <button class="btn btn-primary" id="btnStartTraining">
+                Initialize Portal Access
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Dashboard Main View (shown when name exists) -->
+        <div class="dashboard-grid" id="mainDashboard" style="display: none;">
+            
+            <!-- Progress Banner -->
+            <div class="card progress-banner">
+                <div class="progress-info">
+                    <div>
+                        <h2 style="font-size: 1.5rem;">Your Security Readiness Progression</h2>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">Complete modules in order to unlock advanced drills and receive your certification.</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <span style="font-weight: 700; color: var(--accent);" id="completionRatio">0 of 3 Completed</span>
+                    </div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="overallProgressBar"></div>
+                </div>
+            </div>
+
+            <!-- Left: Module Cards -->
+            <div class="module-grid">
+                
+                <!-- Module 1 Card -->
+                <div class="card module-card" id="cardModule1">
+                    <div class="module-icon-container">
+                        <svg class="module-icon" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <div class="module-details">
+                        <div class="module-header">
+                            <h3>Module 1: Phishing Awareness</h3>
+                            <span class="module-badge badge-available" id="badgeMod1">Available</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                            Learn to spot credential-harvesting emails, analyze links safely, and use our red flags checklist to block email fraud.
+                        </p>
+                        <a href="module1.html" class="btn btn-primary" id="btnMod1">Start Training</a>
+                    </div>
+                </div>
+
+                <!-- Module 2 Card -->
+                <div class="card module-card locked" id="cardModule2">
+                    <div class="module-icon-container">
+                        <svg class="module-icon" viewBox="0 0 24 24">
+                            <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+                        </svg>
+                    </div>
+                    <div class="module-details">
+                        <div class="module-header">
+                            <h3>Module 2: Password Hygiene</h3>
+                            <span class="module-badge badge-locked" id="badgeMod2">Locked</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                            Build uncrackable passphrases, configure Multi-Factor Authentication (MFA), and master password vaults.
+                        </p>
+                        <a href="module2.html" class="btn btn-secondary" id="btnMod2">Locked</a>
+                    </div>
+                </div>
+
+                <!-- Module 3 Card -->
+                <div class="card module-card locked" id="cardModule3">
+                    <div class="module-icon-container">
+                        <svg class="module-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                        </svg>
+                    </div>
+                    <div class="module-details">
+                        <div class="module-header">
+                            <h3>Module 3: Social Engineering</h3>
+                            <span class="module-badge badge-locked" id="badgeMod3">Locked</span>
+                        </div>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">
+                            Defeat impersonation scams, tailgating intrusions, phone vishing tricks, and baiting setups.
+                        </p>
+                        <a href="module3.html" class="btn btn-secondary" id="btnMod3">Locked</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right: Sidebar Stats -->
+            <div class="sidebar">
+                
+                <!-- Quick Stats Card -->
+                <div class="card">
+                    <h3 style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; color: var(--primary);">
+                        Security Index
+                    </h3>
+                    <div class="stat-item">
+                        <span>Average Quiz Score</span>
+                        <span class="stat-value" id="statAvgScore">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Modules Completed</span>
+                        <span class="stat-value" id="statCompleted">0 / 3</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Simulation Status</span>
+                        <span class="stat-value" id="statSimStatus">Not Run</span>
+                    </div>
+                    <div style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem;">
+                        <a href="simulations.html" class="btn btn-primary" style="width: 100%;">
+                            Launch Phishing Simulator
+                        </a>
+                        <a href="results.html" class="btn btn-secondary" style="width: 100%;">
+                            View Certificate
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Badges Earned Card -->
+                <div class="card">
+                    <h3 style="color: var(--primary);">Credentials Earned</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-top: 0.2rem;">Collect shields by passing quizzes with 80%+ scores.</p>
+                    
+                    <div class="badge-list">
+                        <!-- Phishing Shield -->
+                        <div class="badge-item-wrap" style="text-align: center;">
+                            <svg class="badge-icon" id="badgePhish" viewBox="0 0 24 24">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">Phish Shield</div>
+                        </div>
+
+                        <!-- Password Key -->
+                        <div class="badge-item-wrap" style="text-align: center;">
+                            <svg class="badge-icon" id="badgePass" viewBox="0 0 24 24">
+                                <path d="M12.65 10C11.83 7.67 9.61 6 7 6c-3.31 0-6 2.69-6 6s2.69 6 6 6c2.61 0 4.83-1.67 5.65-4H17v4h4v-4h2v-4H12.65zM7 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
+                            </svg>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">Cred Lock</div>
+                        </div>
+
+                        <!-- Social Engineering Master -->
+                        <div class="badge-item-wrap" style="text-align: center;">
+                            <svg class="badge-icon" id="badgeSocial" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                            </svg>
+                            <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.3rem;">Social Master</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reset Data Button -->
+                <button class="btn btn-secondary" id="btnResetData" style="width: 100%; border-color: rgba(255,23,68,0.2); color: rgba(255,23,68,0.7);">
+                    Reset Progress Data
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 CyberShield Awareness Portal. All corporate data simulated. Secure Environment Protocol Active.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/quiz-data.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

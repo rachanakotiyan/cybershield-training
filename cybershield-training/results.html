@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield - Training Results</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <svg class="nav-logo-svg" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M12 6v11M9 9h6"/>
+            </svg>
+            <span class="nav-title">CyberShield</span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="nav-link">Dashboard</a></li>
+            <li><a href="module1.html" class="nav-link" id="navMod1">Phishing</a></li>
+            <li><a href="module2.html" class="nav-link" id="navMod2">Passwords</a></li>
+            <li><a href="module3.html" class="nav-link" id="navMod3">Social Engineering</a></li>
+            <li><a href="simulations.html" class="nav-link">Simulations</a></li>
+            <li><a href="results.html" class="nav-link active">Results</a></li>
+            <li><div class="nav-user" id="navUser">Agent: Guest</div></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Results Summary Header -->
+        <div class="results-header">
+            <span style="color: var(--primary); font-weight: 600; font-family: var(--font-heading);">PROGRAM COMPLETION AUDIT</span>
+            <h1>Your Performance Profile</h1>
+            <p style="color: var(--text-muted); margin-top: 0.3rem;">Below is the summary of your security awareness training scores and certification status.</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Left Side: Performance Metrics & Certificate -->
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                
+                <!-- Scorecard Table Card -->
+                <div class="card">
+                    <h2 style="margin-bottom: 1.2rem; color: var(--primary);">Module Scorecard</h2>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); color: var(--text-dim); font-size: 0.9rem;">
+                                    <th style="padding: 0.8rem;">Security Module</th>
+                                    <th style="padding: 0.8rem;">Status</th>
+                                    <th style="padding: 0.8rem; text-align: right;">Quiz Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <td style="padding: 1rem 0.8rem; font-weight: 500;">Module 1: Phishing Awareness</td>
+                                    <td style="padding: 1rem 0.8rem;"><span class="module-badge badge-locked" id="scoreMod1Status">Incomplete</span></td>
+                                    <td style="padding: 1rem 0.8rem; text-align: right; font-weight: 600; color: var(--accent);" id="scoreMod1Val">--</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <td style="padding: 1rem 0.8rem; font-weight: 500;">Module 2: Password Hygiene</td>
+                                    <td style="padding: 1rem 0.8rem;"><span class="module-badge badge-locked" id="scoreMod2Status">Incomplete</span></td>
+                                    <td style="padding: 1rem 0.8rem; text-align: right; font-weight: 600; color: var(--accent);" id="scoreMod2Val">--</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <td style="padding: 1rem 0.8rem; font-weight: 500;">Module 3: Social Engineering</td>
+                                    <td style="padding: 1rem 0.8rem;"><span class="module-badge badge-locked" id="scoreMod3Status">Incomplete</span></td>
+                                    <td style="padding: 1rem 0.8rem; text-align: right; font-weight: 600; color: var(--accent);" id="scoreMod3Val">--</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem 0.8rem; font-weight: 500;">Phishing Simulation Drill</td>
+                                    <td style="padding: 1rem 0.8rem;"><span class="module-badge badge-locked" id="scoreSimStatus">Not Run</span></td>
+                                    <td style="padding: 1rem 0.8rem; text-align: right; font-weight: 600; color: var(--accent);" id="scoreSimVal">--</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Certificate Display Area -->
+                <div id="certificateContainer" class="certificate-preview-container" style="display: none;">
+                    <div class="certificate" id="printableCertificate">
+                        <!-- Corner borders -->
+                        <div class="certificate-border-corner cert-tl"></div>
+                        <div class="certificate-border-corner cert-tr"></div>
+                        <div class="certificate-border-corner cert-bl"></div>
+                        <div class="certificate-border-corner cert-br"></div>
+                        
+                        <div class="cert-header">
+                            <h3>Certificate of Completion</h3>
+                            <h1>CyberShield Security Awareness</h1>
+                        </div>
+
+                        <div>
+                            <p class="cert-recipient">This document certifies that employee</p>
+                            <div class="cert-name" id="certEmployeeName">John Doe</div>
+                            <p class="cert-text">
+                                has successfully completed all coursework, simulation trials, and knowledge audits for the CyberShield Corporate Awareness Program.
+                            </p>
+                        </div>
+
+                        <div class="cert-footer">
+                            <div class="cert-sig-block">
+                                <div class="cert-sig-image" style="font-family: 'Courier New', monospace; font-weight: bold;">CYBER_OFFICE</div>
+                                <span>Security Compliance Audits</span>
+                            </div>
+                            
+                            <div class="cert-badge-container">
+                                <svg class="cert-badge-svg" viewBox="0 0 24 24">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                    <path d="M9 12l2 2 4-4" stroke="#000" stroke-width="2" fill="none"/>
+                                </svg>
+                            </div>
+
+                            <div class="cert-sig-block">
+                                <div class="cert-sig-image" id="certDateVal">2026-06-13</div>
+                                <span>Date Issued</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unearned/Incomplete Warning Card -->
+                <div class="card warning-block" id="certificateLockedWarning" style="margin: 0;">
+                    <h3 style="color: var(--danger); margin-bottom: 0.5rem;">Certificate Locked</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;" id="certLockMessage">
+                        You have not met the requirements to receive your security certification. You must complete all 3 training modules and pass each quiz with a score of 80% (4/5) or higher.
+                    </p>
+                    <div style="margin-top: 1rem;" id="remediationLinks">
+                        <!-- Loaded dynamically based on which modules are failed/incomplete -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Side: Score Wheel & Action Buttons -->
+            <div class="sidebar">
+                
+                <!-- Score Stats Card -->
+                <div class="card" style="text-align: center;">
+                    <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Total Program Grade</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem;">Required passing grade: 70% overall</p>
+                    
+                    <div class="results-score-wheel">
+                        <span class="results-score-value" id="totalScorePercent">0%</span>
+                        <span style="font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600;" id="gradingBadge">Incomplete</span>
+                    </div>
+
+                    <div style="text-align: left; margin-top: 1.5rem; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Correct Answers:</span>
+                            <span style="font-weight: 600; color: var(--text-main);" id="statCorrectAnswers">0 / 15</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span>Simulation Found:</span>
+                            <span style="font-weight: 600; color: var(--text-main);" id="statSimulationFlags">0 / 4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Panel -->
+                <div class="card" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                    <button class="btn btn-primary" id="btnPrintCert" disabled style="width: 100%;">
+                        Print Certificate
+                    </button>
+                    <button class="btn btn-secondary" id="btnShareResults" style="width: 100%;">
+                        Share Results Summary
+                    </button>
+                    <a href="index.html" class="btn btn-secondary" style="width: 100%;">
+                        Return to Dashboard
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Alert Container -->
+    <div id="toastNotification" class="toast" style="display: none;">
+        <svg width="20" height="20" fill="var(--primary)" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+        </svg>
+        <span id="toastMessage">Results copied to clipboard!</span>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 CyberShield Awareness Portal. All corporate data simulated. Secure Environment Protocol Active.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/quiz-data.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield - Phishing Simulation</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <svg class="nav-logo-svg" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M12 6v11M9 9h6"/>
+            </svg>
+            <span class="nav-title">CyberShield</span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="nav-link">Dashboard</a></li>
+            <li><a href="module1.html" class="nav-link" id="navMod1">Phishing</a></li>
+            <li><a href="module2.html" class="nav-link" id="navMod2">Passwords</a></li>
+            <li><a href="module3.html" class="nav-link" id="navMod3">Social Engineering</a></li>
+            <li><a href="simulations.html" class="nav-link active">Simulations</a></li>
+            <li><a href="results.html" class="nav-link">Results</a></li>
+            <li><div class="nav-user" id="navUser">Agent: Guest</div></li>
+        </ul>
+    </nav>
+
+    <div class="container" style="max-width: 900px;">
+        <!-- Header -->
+        <div style="margin-bottom: 1.5rem; text-align: center;">
+            <span style="color: var(--primary); font-weight: 600; font-family: var(--font-heading);">PRACTICAL SIMULATION DRILL</span>
+            <h1>Email Threat Analysis</h1>
+            <p style="color: var(--text-muted); margin-top: 0.3rem;">Identify the <strong>4 red flags</strong> hidden in the email below by clicking directly on the suspicious elements.</p>
+        </div>
+
+        <!-- Simulator Toolbar -->
+        <div class="card" style="padding: 1rem 1.5rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-color: rgba(0, 180, 255, 0.3);">
+            <div>
+                <span style="font-weight: 600; color: var(--accent);">Progress Indicator:</span>
+                <span style="margin-left: 0.5rem; font-family: var(--font-heading); font-weight: 700;" id="simScoreText">0 of 4 Red Flags Spotted</span>
+            </div>
+            <div class="progress-bar-container" style="width: 200px; height: 10px; margin: 0;">
+                <div class="progress-bar" id="simProgressBar" style="width: 0%;"></div>
+            </div>
+        </div>
+
+        <!-- Mock Email Client Container -->
+        <div class="email-client">
+            <!-- Client Header Controls -->
+            <div class="email-client-header">
+                <span class="window-dot dot-red"></span>
+                <span class="window-dot dot-yellow"></span>
+                <span class="window-dot dot-green"></span>
+                <span style="color: var(--text-dim); font-size: 0.8rem; margin-left: auto; font-family: monospace;">SECURE_MAIL_VIEWER_V1.9</span>
+            </div>
+
+            <!-- Email Meta Headers -->
+            <div class="email-client-meta">
+                <div class="meta-row">
+                    <span class="meta-label">From:</span>
+                    <span>Microsoft Account Alerts </span>
+                    <span class="hotspot" id="hotspotSender" data-id="1">
+                        &lt;support@microsoft-online-security-update.net&gt;
+                        <span class="hotspot-tooltip">
+                            <strong>Red Flag 1: Spoofed Sender Domain</strong><br>
+                            Although the display name says 'Microsoft', the email address domain is 'microsoft-online-security-update.net', which is not the official @microsoft.com domain.
+                        </span>
+                    </span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Date:</span>
+                    <span>June 13, 2026 at 10:42 AM</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">To:</span>
+                    <span id="simulationUserEmail">employee@company.com</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Subject:</span>
+                    <span style="font-weight: 600; color: var(--text-main);">URGENT: Suspicious Login Blocked - Verify Account Details</span>
+                </div>
+            </div>
+
+            <!-- Email Body Content (White Background simulation) -->
+            <div class="email-body">
+                <p style="margin-bottom: 1.5rem; font-size: 1rem; color: #111;">
+                    <span class="hotspot" id="hotspotGreeting" data-id="2">
+                        Dear Microsoft Office User,
+                        <span class="hotspot-tooltip">
+                            <strong>Red Flag 2: Generic Greeting</strong><br>
+                            Official notifications from systems where you are registered will address you by your actual name, not vague terms like 'Office User' or 'Customer'.
+                        </span>
+                    </span>
+                </p>
+
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem; color: #333; line-height: 1.5;">
+                    We noticed a suspicious connection attempt on your office mail database from IP address 185.220.101.5 (Moscow, RU). For your protection, your corporate credentials will be permanently deactivated
+                    <span class="hotspot" id="hotspotUrgency" data-id="3">
+                        within 24 hours
+                        <span class="hotspot-tooltip">
+                            <strong>Red Flag 3: Artificial Urgency</strong><br>
+                            Attackers try to create panic (like threat of deactivation in 24 hours) so you act quickly without verifying the request.
+                        </span>
+                    </span>
+                     unless you confirm your employee identity.
+                </p>
+
+                <!-- Fake CTA Button -->
+                <div style="margin: 2.2rem 0; text-align: center;">
+                    <span class="hotspot" id="hotspotLink" data-id="4" style="display: inline-block; border-bottom: none; background: none;">
+                        <a href="#" onclick="return false;" style="display: inline-block; background: #0078d4; color: #ffffff; padding: 0.8rem 2rem; font-weight: 600; text-decoration: none; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.15);">
+                            Verify Account Credentials
+                        </a>
+                        <span class="hotspot-tooltip">
+                            <strong>Red Flag 4: Suspicious Hyperlink Destination</strong><br>
+                            Hovering over this button reveals it leads to 'http://login.secure-microsoft-portal-database.info/login' - an unencrypted (http) domain, not a real Microsoft login.
+                        </span>
+                    </span>
+                </div>
+
+                <p style="font-size: 0.9rem; color: #666; margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; line-height: 1.4;">
+                    Microsoft Corporation, One Microsoft Way, Redmond, WA 98052.<br>
+                    This is an automated notification. Replies to this email box are unmonitored.
+                </p>
+            </div>
+        </div>
+
+        <!-- Bottom Action Bar -->
+        <div style="margin-top: 2rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+            <div id="simCompleteMessage" style="display: none; padding: 1rem 1.5rem; background: rgba(0, 230, 118, 0.08); border: 1px solid var(--success); border-radius: var(--radius-sm); color: var(--success);">
+                🎉 <strong>Excellent work!</strong> You detected all the phishing indicators in this email. You are now ready to report it.
+            </div>
+            
+            <button class="btn btn-primary btn-lg" id="btnReportEmail" disabled style="padding: 1rem 3rem; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(0,180,255,0.3);">
+                🛡️ Report This Email
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 CyberShield Awareness Portal. All corporate data simulated. Secure Environment Protocol Active.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/quiz-data.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

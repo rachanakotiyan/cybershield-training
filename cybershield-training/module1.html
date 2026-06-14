@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield - Phishing Awareness</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <svg class="nav-logo-svg" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="M12 6v11M9 9h6"/>
+            </svg>
+            <span class="nav-title">CyberShield</span>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">☰</button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html" class="nav-link">Dashboard</a></li>
+            <li><a href="module1.html" class="nav-link active" id="navMod1">Phishing</a></li>
+            <li><a href="module2.html" class="nav-link" id="navMod2">Passwords</a></li>
+            <li><a href="module3.html" class="nav-link" id="navMod3">Social Engineering</a></li>
+            <li><a href="simulations.html" class="nav-link">Simulations</a></li>
+            <li><a href="results.html" class="nav-link">Results</a></li>
+            <li><div class="nav-user" id="navUser">Agent: Guest</div></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Module Header -->
+        <div class="module-progress-header">
+            <div>
+                <span style="color: var(--primary); font-weight: 600; font-family: var(--font-heading);">MODULE 1 OF 3</span>
+                <h1>Phishing Awareness</h1>
+            </div>
+            <div style="text-align: right;">
+                <span id="moduleCompletionStatus" class="module-badge badge-available">Available</span>
+            </div>
+        </div>
+
+        <!-- Inner Tabs Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" id="btnTab0">1. Overview</button>
+            <button class="tab-btn" id="btnTab1">2. Attack Types</button>
+            <button class="tab-btn" id="btnTab2">3. Red Flags Checklist</button>
+            <button class="tab-btn" id="btnTab3">4. Knowledge Test</button>
+        </div>
+
+        <!-- Main Card Content Area -->
+        <div class="card" style="margin-bottom: 2rem;">
+            
+            <!-- Section 1: Overview -->
+            <div class="content-section active" id="section0">
+                <h2>Understanding Phishing</h2>
+                <p style="margin-top: 1rem; color: var(--text-muted);">
+                    Phishing is a method where cybercriminals impersonate reputable organizations or colleagues to trick employees into sharing sensitive data (like passwords or banking routing codes) or executing malicious files.
+                </p>
+                
+                <div class="info-block">
+                    <h3 style="color: var(--primary); font-size: 1.1rem; margin-bottom: 0.5rem;">Why is it called Phishing?</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Just like a fisherman drops a baited hook into the water hoping a fish will bite, attackers send millions of emails containing "hooks" hoping someone will click.
+                    </p>
+                </div>
+
+                <h3 style="margin-top: 1.5rem; margin-bottom: 0.8rem;">How Attacks Exploit Psychology</h3>
+                <p style="color: var(--text-muted); margin-bottom: 1.2rem;">
+                    Attackers build trust or panic by using psychological triggers:
+                </p>
+                <ul style="list-style-position: inside; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.5rem;">
+                    <li><strong>Urgency:</strong> "Verify your password in 2 hours or your account is suspended."</li>
+                    <li><strong>Authority:</strong> "This is the CEO, I need you to wire funds immediately."</li>
+                    <li><strong>Curiosity:</strong> "View your Q3 bonus proposal sheet here."</li>
+                </ul>
+
+                <div class="module-nav-btns">
+                    <div></div>
+                    <button class="btn btn-primary next-section-btn" data-next="1">
+                        Continue to Attack Types
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Section 2: Attack Types -->
+            <div class="content-section" id="section1">
+                <h2>Forms of Phishing</h2>
+                <p style="margin-top: 1rem; color: var(--text-muted); margin-bottom: 1.5rem;">
+                    Phishing is not limited to generic spam emails. Attackers tailor their methods based on their specific targets:
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div class="card" style="padding: 1.2rem; background: rgba(0,0,0,0.2);">
+                        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 0.5rem;">Spear Phishing</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">
+                            A highly targeted email attack aimed at a specific individual or department. Attackers gather personal details from social networks to make the scam highly convincing.
+                        </p>
+                    </div>
+                    <div class="card" style="padding: 1.2rem; background: rgba(0,0,0,0.2);">
+                        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 0.5rem;">Whaling</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">
+                            Spear phishing directed specifically at high-level executives (CEO, CFO). The goals usually involve executive credentials or authorizing major bank transfers.
+                        </p>
+                    </div>
+                    <div class="card" style="padding: 1.2rem; background: rgba(0,0,0,0.2);">
+                        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 0.5rem;">Smishing & Vishing</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">
+                            Phishing conducted via text messages (Smishing) or telephone calls (Vishing). Attackers might claim there's a fraud alert on your card or that IT needs an verification PIN.
+                        </p>
+                    </div>
+                    <div class="card" style="padding: 1.2rem; background: rgba(0,0,0,0.2);">
+                        <h3 style="color: var(--accent); font-size: 1.1rem; margin-bottom: 0.5rem;">Clone Phishing</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">
+                            An attacker copies a legitimate email that you previously received, replaces the link or attachment with a malicious one, and sends it from a look-alike address.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="module-nav-btns">
+                    <button class="btn btn-secondary prev-section-btn" data-prev="0">Back</button>
+                    <button class="btn btn-primary next-section-btn" data-next="2">
+                        View Red Flags Checklist
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Section 3: Checklist -->
+            <div class="content-section" id="section2">
+                <h2>Email Inspection Checklist</h2>
+                <p style="margin-top: 1rem; color: var(--text-muted);">
+                    Use this checklist to analyze emails before replying or clicking. Click each box to confirm your understanding:
+                </p>
+
+                <div class="checklist">
+                    <label class="checklist-item" id="chkItem1">
+                        <input type="checkbox" id="chk1">
+                        <span><strong>Sender Address Match:</strong> Verify the actual email domain (the part after @) matches the official domain of the sender (e.g. support@paypal-security.net is fake; the real domain is @paypal.com).</span>
+                    </label>
+                    <label class="checklist-item" id="chkItem2">
+                        <input type="checkbox" id="chk2">
+                        <span><strong>Hyperlink Destination:</strong> Hover over links without clicking. Check if the popup URL points to a completely different, unsecure, or misspelled website.</span>
+                    </label>
+                    <label class="checklist-item" id="chkItem3">
+                        <input type="checkbox" id="chk3">
+                        <span><strong>Generic Greetings:</strong> Be wary of vague openings like "Dear Customer" or "Valued Partner" instead of your specific name.</span>
+                    </label>
+                    <label class="checklist-item" id="chkItem4">
+                        <input type="checkbox" id="chk4">
+                        <span><strong>High-Pressure Language:</strong> Watch out for keywords creating artificial urgency, panic, or fear of negative consequences.</span>
+                    </label>
+                    <label class="checklist-item" id="chkItem5">
+                        <input type="checkbox" id="chk5">
+                        <span><strong>Suspicious Attachments:</strong> Never run attachments ending in executable formats (like .zip, .exe, .scr) or files requesting macro approvals.</span>
+                    </label>
+                </div>
+
+                <div class="warning-block">
+                    <strong>Remember:</strong> IT Security will NEVER ask for your password via email, SMS, or telephone. Any request for credentials is an immediate compromise indicator.
+                </div>
+
+                <div class="module-nav-btns">
+                    <button class="btn btn-secondary prev-section-btn" data-prev="1">Back</button>
+                    <button class="btn btn-primary next-section-btn" data-next="3">
+                        Start Knowledge Quiz
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Section 4: Quiz -->
+            <div class="content-section" id="section3">
+                <h2>Module 1 Quiz: Phishing Awareness</h2>
+                <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Answer the following 5 questions to test your knowledge. A passing score of 80% (4/5) unlocks Module 2.</p>
+                
+                <div id="quizContainer">
+                    <!-- Loaded dynamically via JS -->
+                </div>
+
+                <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+                    <button class="btn btn-secondary prev-section-btn" data-prev="2">Back</button>
+                    <button class="btn btn-success" id="btnSubmitQuiz">Submit Answers</button>
+                </div>
+
+                <!-- Score Overlay & Continue -->
+                <div id="quizResultsPanel" style="display: none; margin-top: 2rem; padding: 1.5rem; background: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); text-align: center;">
+                    <h3 id="quizResultMessage">You Scored 80% (4/5)</h3>
+                    <p id="quizResultAdvice" style="color: var(--text-muted); margin: 0.5rem 0 1.5rem 0;">You have unlocked the next training level.</p>
+                    <button class="btn btn-primary" id="btnCompleteModule" style="display: none;">Complete Module & Return</button>
+                    <button class="btn btn-secondary" id="btnRetakeQuiz" style="display: none;">Retake Quiz</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 CyberShield Awareness Portal. All corporate data simulated. Secure Environment Protocol Active.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/quiz-data.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
