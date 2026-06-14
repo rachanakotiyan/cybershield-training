@@ -60,7 +60,9 @@ function resetAppState() {
 // Module unlocks and badge progression checks
 function recordQuizCompletion(moduleKey, correctCount) {
     const state = getAppState();
-    const percentScore = Math.round((correctCount / 5) * 100);
+    // Determine total questions dynamically from quizData if available
+    const totalQuestions = (typeof quizData !== 'undefined' && quizData[moduleKey]) ? quizData[moduleKey].length : 5;
+    const percentScore = Math.round((correctCount / totalQuestions) * 100);
     
     // Save score
     state.scores[moduleKey] = percentScore;

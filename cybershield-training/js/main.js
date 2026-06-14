@@ -437,7 +437,7 @@ function initQuizEngine() {
             const answeredCount = Object.keys(quizAnswersSelected).length;
 
             if (answeredCount < qCount) {
-                alert("Please answer all 5 questions before submitting.");
+                alert(`Please answer all ${qCount} questions before submitting.`);
                 return;
             }
 
@@ -507,7 +507,7 @@ function initQuizEngine() {
             const btnComplete = document.getElementById("btnCompleteModule");
             const btnRetake = document.getElementById("btnRetakeQuiz");
 
-            const percentScore = Math.round((correctCount / 5) * 100);
+            const percentScore = Math.round((correctCount / qCount) * 100);
             
             // Record state progress
             recordQuizCompletion(moduleKey, correctCount);
